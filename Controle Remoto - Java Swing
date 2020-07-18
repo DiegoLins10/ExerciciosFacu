@@ -1,0 +1,120 @@
+
+//Crie uma classe Televisao e uma classe ControleRemoto que pode controlar o
+//volume e trocar os canais da televisão. O controle de volume permite:
+//– aumentar ou diminuir a potência do volume de som em uma unidade de
+//cada vez;
+//– aumentar e diminuir o número do canal em uma unidade;
+//– trocar para um canal indicado;
+//– consultar o valor do volume de som e o canal selecionado.
+
+
+//Diego Lins
+
+
+import javax.swing.JOptionPane;
+
+public class ControleRemoto {
+
+    static String ligada;
+    static String strCanal;
+    static String strVolume;
+    static int intCanal;
+    static int intVolume;
+    static String strAumentarCanal;
+    static String strAumentarVolume;
+    
+    public static void main(String[] args) {                                                        //Diego Lins
+
+        ligada = JOptionPane.showInputDialog("Deseja ligar a televisão(sim/não)?");
+        if (ligada.equalsIgnoreCase("Sim")){
+            
+            Televisao TV = new Televisao();
+            TV.setLigada(true);
+    
+            strCanal = JOptionPane.showInputDialog("Digite o canal:");
+            strVolume = JOptionPane.showInputDialog("Digite o Volume:");
+
+            intCanal = Integer.parseInt(strCanal);
+            intVolume = Integer.parseInt(strVolume);
+            
+            TV.setCanal(intCanal);
+            TV.setVolume(intVolume);
+
+            intCanal = TV.getCanal();
+            intVolume = TV.getVolume();
+
+            JOptionPane.showMessageDialog(null, "O canal : " + intCanal);
+            JOptionPane.showMessageDialog(null, "O Volume : " + intVolume);
+            
+            strAumentarCanal = JOptionPane.showInputDialog("Deseja aumentar o canal(sim/não)?");
+            if(strAumentarCanal.equalsIgnoreCase("sim")){
+                TV.setAumentarCanal();
+            }else{
+                TV.setDiminuirCanal();
+            }
+
+            strAumentarVolume = JOptionPane.showInputDialog("Deseja aumentar o volume(sim/não)?");
+            if(strAumentarVolume.equalsIgnoreCase("sim")){
+                TV.setAumentarVolume();
+            }else{
+                TV.setDiminuirVolume();
+            }
+
+            intCanal = TV.getCanal();
+            intVolume = TV.getVolume();
+
+            JOptionPane.showMessageDialog(null, "O canal : " + intCanal);
+            JOptionPane.showMessageDialog(null, "O Volume : " + intVolume);
+            
+        }
+    
+    }   
+}
+
+public class Televisao {
+
+   private int canal, volume;    
+   private boolean ligada=false; 
+
+    public int getCanal() {
+        return canal;
+    }
+
+    public void setCanal(int canal) {
+        this.canal = canal;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public boolean isLigada() {
+        return ligada;
+    }
+
+    public void setLigada(boolean ligada) {
+        this.ligada = ligada;
+    }
+    
+    public void setAumentarVolume(){
+        this.volume = this.volume +  1;
+    }
+
+    public void setDiminuirVolume(){
+        this.volume = this.volume -  1;
+    }
+
+    public void setAumentarCanal(){
+        this.canal = this.canal +  1;
+    }
+
+    public void setDiminuirCanal(){
+        this.canal = this.canal -  1;
+    }
+   
+}
+
