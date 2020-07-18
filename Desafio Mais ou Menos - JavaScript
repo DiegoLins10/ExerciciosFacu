@@ -1,0 +1,34 @@
+//Necessitamos uma função maisMenos que receba um array e retorne outro com os seguintes três números:
+
+//na primeira posição, a fração de números que são positivos
+//na segunda posição, a fração de números que são zero
+//na última posição, a fração de números que são negativos
+//Por exemplo, maisMenos([1, 2, 0, -1]) deveria retornar [0.5, 0.25, 0.25], devido a que há 50% de positivos, 25% de zeros, e 25% de negativos.
+
+//Escreva a função maisMenos.
+
+
+//Diego Lins
+
+
+function maisMenos(array){
+  var posi = 0;
+  var negativo = 0;
+  var zero = 0;
+  for(var i = 0; i<array.length; i++){
+    if(array[i] == 0){
+      zero += 1;
+    }else if(array[i] > 0){
+      posi += 1;
+    }else{
+      negativo += 1;
+    }
+  }
+  zero = zero / array.length;
+  posi = posi/array.length;
+  negativo = negativo/array.length;
+  
+  var newArray = [posi, zero, negativo];
+  return newArray;
+}
+console.log(maisMenos([1, 2, 0, -1]))
